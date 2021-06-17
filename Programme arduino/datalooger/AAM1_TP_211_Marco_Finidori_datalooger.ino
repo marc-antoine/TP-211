@@ -7,6 +7,21 @@
 // Description: Récupération de données
 
 
+
+/*
+Writing Sensor Data to an SD card
+//
+This example shows how to write data
+to an SD card using the SD library.
+//
+The circuit:
+* SD card attached to SPI bus as follows:
+** MOSI - pin 11
+** MISO - pin 12
+** CLK - pin 13
+** CS - pin 10 Uno 
+*/
+//
 #include "SD.h"
 #include"SPI.h"
 //
@@ -15,12 +30,10 @@
 // library functions will not work.
 const int CSpin = 10;
 String dataString =""; // holds the data to be written to the SD card
-float power = 0.00; // value read from your first sensor
-float voltage = 0.00; // value read from your second sensor
+float sensorReading1 = 0.00; // value read from your first sensor
+float sensorReading2 = 0.00; // value read from your second sensor
+float sensorReading3 = 0.00; // value read from your third sensor
 File sensorData;
-int number_of_mesure = 0;
-
-float resistance = 12.5;
 //
 //
 void setup()
@@ -40,16 +53,10 @@ Serial.println("card initialized.");
 }
 //
 void loop(){
-// 
-  number_of_mesure = number_of_mesure + 1;
-  voltage = analogRead(A0);
-  voltage = (voltage * 5 )/ 1023;
-  power =(voltage * voltage)/ resistance ;
-  Serial.println(power);
 // build the data string
-dataString = String(number_of_mesure)+ "," + String(power) + "," + String(voltage); // convert to CSV
+dataString = String(sensorReading1) + "," + String(sensorReading2) + "," + String(sensorReading3); // convert to CSV
 saveData(); // save to SD card
-delay(1000); // delay before next write to SD Card, adjust as required
+delay(60000); // delay before next write to SD Card, adjust as required
 }
 //
 void saveData(){
