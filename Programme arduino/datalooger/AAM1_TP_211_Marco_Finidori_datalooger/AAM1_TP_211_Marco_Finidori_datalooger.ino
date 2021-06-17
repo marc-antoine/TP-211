@@ -1,3 +1,11 @@
+//!/usr/bin/C++
+//   -*- coding: utf-8 -*-
+// Date: Sunday 6 June 2021 09h02:01 CEST
+// Author: Fabio Malerba
+// Last updated by: Marco Finidori
+// Last updated time: Sunday 17 June 2021 10:20:20 CEST
+// Description: Récupération de données
+
 
 #include "SD.h"
 #include"SPI.h"
